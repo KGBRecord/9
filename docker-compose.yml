@@ -37,6 +37,4 @@ services:
 
 volumes:
   9router-data:
-    name: 9router-data
   omniroute-data:
-    name: omniroute-data
