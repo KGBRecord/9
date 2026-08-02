@@ -1,26 +1,26 @@
 services:
-  omniroute:
-    image: diegosouzapw/omniroute:latest
-    container_name: omniroute
-    restart: unless-stopped
-    stop_grace_period: 40s
-    ports:
-      - "20128:20128"
-    volumes:
-      - omniroute-data:/app/data
+  # omniroute:
+  #   image: diegosouzapw/omniroute:latest
+  #   container_name: omniroute
+  #   restart: unless-stopped
+  #   stop_grace_period: 40s
+  #   ports:
+  #     - "20128:20128"
+  #   volumes:
+  #     - omniroute-data:/app/data
   9router:
     image: decolua/9router:latest
     container_name: 9router
     restart: always
     ports:
-      - "20127:20127"
+      - "20128:20128"
     volumes:
       - 9router-data:/app/data
     environment:
       JWT_SECRET: "change-me-to-a-long-random-secret"
       INITIAL_PASSWORD: "123456"
       DATA_DIR: /app/data
-      PORT: "20127"
+      PORT: "20128"
       HOSTNAME: "0.0.0.0"
       NODE_ENV: production
       API_KEY_SECRET: endpoint-proxy-api-key-secret
@@ -29,10 +29,10 @@ services:
       OBSERVABILITY_ENABLED: true
       AUTH_COOKIE_SECURE: false
       REQUIRE_API_KEY: false
-      BASE_URL: http://localhost:20127
-      CLOUD_URL: http://localhost:20127
-      NEXT_PUBLIC_BASE_URL: http://localhost:20127
-      NEXT_PUBLIC_CLOUD_URL: http://localhost:20127
+      BASE_URL: https://omni.tdigroup.vn
+      CLOUD_URL: https://omni.tdigroup.vn
+      NEXT_PUBLIC_BASE_URL: https://omni.tdigroup.vn
+      NEXT_PUBLIC_CLOUD_URL: https://omni.tdigroup.vn
       HEADROOM_URL: http://headroom:8787
 
 volumes:
