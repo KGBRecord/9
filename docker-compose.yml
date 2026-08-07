@@ -1,26 +1,26 @@
 services:
-  # omniroute:
-  #   image: diegosouzapw/omniroute:latest
-  #   container_name: omniroute
-  #   restart: unless-stopped
-  #   stop_grace_period: 40s
-  #   ports:
-  #     - "20128:20128"
-  #   volumes:
-  #     - omniroute-data:/app/data
+  omniroute:
+    image: diegosouzapw/omniroute:latest
+    container_name: omniroute
+    restart: unless-stopped
+    stop_grace_period: 40s
+    ports:
+      - "20128:20128"
+    volumes:
+      - omniroute-data:/app/data
   9router:
     image: decolua/9router:latest
     container_name: 9router
     restart: always
     ports:
-      - "20128:20128"
+      - "20127:20127"
     volumes:
       - 9router-data:/app/data
     environment:
       JWT_SECRET: "change-me-to-a-long-random-secret"
       INITIAL_PASSWORD: "123456"
       DATA_DIR: /app/data
-      PORT: "20128"
+      PORT: "20127"
       HOSTNAME: "0.0.0.0"
       NODE_ENV: production
       API_KEY_SECRET: endpoint-proxy-api-key-secret
